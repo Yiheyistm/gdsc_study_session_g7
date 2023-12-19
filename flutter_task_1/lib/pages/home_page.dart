@@ -26,8 +26,8 @@ class HomePage extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 2, horizontal: 70),
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.blue,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
               ),
               onPressed: () {
                 Navigator.push(

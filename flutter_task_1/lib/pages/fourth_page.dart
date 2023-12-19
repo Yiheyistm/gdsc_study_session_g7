@@ -12,6 +12,13 @@ class _FourthPageState extends State<FourthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context, rootNavigator: true).pop();
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          style: IconButton.styleFrom(foregroundColor: Colors.amber[800]),
+        ),
         title: const Text('Task Detail'),
         centerTitle: true,
         actions: const [Icon(Icons.more_vert)],
@@ -27,7 +34,7 @@ class _FourthPageState extends State<FourthPage> {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Colors.grey,
+                color: const Color.fromARGB(255, 223, 219, 219),
               ),
               width: 300,
               child: const Text('UI/UX App Design'),
@@ -39,7 +46,7 @@ class _FourthPageState extends State<FourthPage> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Colors.grey,
+                color: const Color.fromARGB(255, 223, 219, 219),
               ),
               padding: const EdgeInsets.all(10),
               width: 300,
@@ -56,7 +63,7 @@ class _FourthPageState extends State<FourthPage> {
               width: 300,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Colors.grey,
+                color: const Color.fromARGB(255, 223, 219, 219),
               ),
               child: const Text('April 29, 2023'),
             ),
