@@ -1,7 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_task_1/TodoList.dart';
-import 'package:flutter_task_1/pages/fourth_page.dart';
 import 'package:flutter_task_1/pages/third_page.dart';
 
 class SecondPage extends StatefulWidget {
@@ -12,22 +9,19 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  // final List<String> _toDoLists = [
-  //   "UI/UX App design",
-  //   "UI/UX App design",
-  //   "View Candidats",
-  //   "Football Cup Drybling"
-  // ];
+  final List<String> _toDoLists = [
+    "UI/UX App design",
+    "UI/UX App design",
+    "View Candidats",
+    "Football Cup Drybling"
+  ];
   final List<Color?> color = [
     Colors.red[400],
     Colors.green[400],
     Colors.orange[400],
-    Colors.blue[400],
-    Colors.pink,
-    Colors.purple[700],
-    Colors.black,
+    Colors.red[400],
   ];
-  int colorIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +42,7 @@ class _SecondPageState extends State<SecondPage> {
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0, left: 60),
-            child: Image.asset('assets/images/stickman-1.png'),
+            child: Image.asset('images/stickman-1.png'),
           ),
           const Padding(
             padding: EdgeInsets.only(left: 12.0),
@@ -62,26 +56,27 @@ class _SecondPageState extends State<SecondPage> {
           ),
           Expanded(child: _listBuilder()),
           Padding(
-            padding: EdgeInsets.only(bottom: todoLists.length < 6 ? 100 : 0),
-            child: Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: const Color.fromARGB(255, 238, 98, 5),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7))),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (contex) => const ThirdPage(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'Create Task',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+            padding: const EdgeInsets.only(bottom: 30, left: 80),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 2, horizontal: 70),
+                foregroundColor: Colors.white,
+                backgroundColor: const Color.fromARGB(255, 238, 98, 5),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (contex) => const ThirdPage(),
+                  ),
+                );
+              },
+              child: const Text(
+                'Create Task',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -92,81 +87,41 @@ class _SecondPageState extends State<SecondPage> {
 
   Widget _listBuilder() {
     return ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemExtent: 70,
-        cacheExtent: 0,
-        itemCount: todoLists.length,
+        itemCount: _toDoLists.length,
         itemBuilder: (BuildContext context, int index) {
-          colorIndex = colorIndex == 7 ? 0 : colorIndex;
-
           return Padding(
             padding: const EdgeInsets.only(left: 6, top: 3, right: 6),
-            child: Dismissible(
-              key: Key(todoLists[index].toString()),
-              direction: DismissDirection.endToStart,
-              background: const Card(
-                elevation: 7,
-                color: Colors.red,
-                child: Icon(Icons.delete),
-              ),
-              onDismissed: (direction) {
-                setState(() {
-                  todoLists.removeAt(index);
-                });
-              },
-              child: Card(
-                color: Colors.white,
-                surfaceTintColor: Colors.white,
-                elevation: 4,
-                child: ListTile(
-                  onTap: () {
-                    if (kDebugMode) {
-                      print("I got clicked");
-                    }
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (contex) {
-                          return FourthPage(
-                            title: todoLists[index].title,
-                            description: todoLists[index].desc,
-                            deadLine: todoLists[index].dateTime,
-                          );
-                        },
+            child: Card(
+              color: Colors.white,
+              surfaceTintColor: Colors.white,
+              elevation: 4,
+              child: ListTile(
+                leading: Text(
+                  _toDoLists[index][0],
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                title: Text(
+                  _toDoLists[index],
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 17),
+                ),
+                trailing: SizedBox(
+                  width: 100,
+                  height: 40,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text("April 29, 2023"),
+                      const SizedBox(
+                        width: 9,
                       ),
-                    );
-                  },
-                  leading: CircleAvatar(
-                    backgroundColor: const Color.fromARGB(255, 243, 243, 243),
-                    child: Text(
-                      todoLists[index].title[0],
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.black),
-                    ),
-                  ),
-                  title: Text(
-                    todoLists[index].title,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
-                  trailing: SizedBox(
-                    width: 125,
-                    height: 45,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(todoLists[index].dateTime),
-                        const Spacer(),
-                        Container(
-                          color: color[colorIndex++],
-                          width: 7,
-                        )
-                      ],
-                    ),
+                      Container(
+                        color: color[index],
+                        width: 7,
+                      )
+                    ],
                   ),
                 ),
               ),

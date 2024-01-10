@@ -14,32 +14,32 @@ class HomePage extends StatelessWidget {
             Container(
               width: 400,
               color: Colors.transparent,
-              child: Image.asset('assets/images/stickman.png'),
+              child: Image.asset('images/stickman.png'),
             ),
             const SizedBox(
               height: 120,
             ),
             //Elevated button
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7)),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (contex) => const SecondPage(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'Get Started',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 2, horizontal: 70),
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (contex) => const SecondPage(),
+                  ),
+                );
+              },
+              child: const Text(
+                'Get Started',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
           ],

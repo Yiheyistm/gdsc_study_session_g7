@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FourthPage extends StatelessWidget {
-  const FourthPage(
-      {super.key,
-      required this.title,
-      required this.description,
-      required this.deadLine});
-  final String title;
-  final String description;
-  final String deadLine;
+class FourthPage extends StatefulWidget {
+  const FourthPage({super.key});
 
+  @override
+  State<FourthPage> createState() => _FourthPageState();
+}
+
+class _FourthPageState extends State<FourthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +28,7 @@ class FourthPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset('assets/images/shopping-1.png'),
+            Image.asset('images/shopping-1.png'),
             const Text('Title'),
             Container(
               padding: const EdgeInsets.all(10),
@@ -39,25 +37,25 @@ class FourthPage extends StatelessWidget {
                 color: const Color.fromARGB(255, 223, 219, 219),
               ),
               width: 300,
-              child: Text(title),
+              child: const Text('UI/UX App Design'),
             ),
             const SizedBox(
-              height: 12,
+              height: 7,
             ),
             const Text('Description'),
             Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color.fromARGB(255, 223, 219, 219),
-                ),
-                padding: const EdgeInsets.all(10),
-                width: 300,
-                height: 120,
-                child: SingleChildScrollView(
-                  child: Text(description),
-                )),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: const Color.fromARGB(255, 223, 219, 219),
+              ),
+              padding: const EdgeInsets.all(10),
+              width: 300,
+              height: 100,
+              child: const Text(
+                  'First i have to animate the logo and prototyping my design. It\'s very important'),
+            ),
             const SizedBox(
-              height: 17,
+              height: 7,
             ),
             const Text('Deadline'),
             Container(
@@ -67,7 +65,7 @@ class FourthPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 color: const Color.fromARGB(255, 223, 219, 219),
               ),
-              child: Text(deadLine),
+              child: const Text('April 29, 2023'),
             ),
           ],
         ),
